@@ -90,6 +90,26 @@ describe( 'FetchElement', () =>
         expect(el.querySelector('img').src ).to.include('mock/doc.png' );
     } );
 
+    it( 'json2table renderer', async () =>
+    {   const url = new URL('mock/dwarfs.json', import.meta.url).pathname;
+        const el = await fixture( html`
+            <fetch-element src="${url}"></fetch-element>` );
+        const orig = el.json2table;
+        el.json2table = (data,path) =>
+        {
+            if( path.length === 2 && path[1] === 'name' )
+                return `${ path.join(' ') }: ${ data }`;
+            return orig.apply(el,[data,path]);
+        }
+        await el.promise;
+
+        expect(el.querySelectorAll('tr').length ).to.equal( 8 );
+        expect(el.querySelector('tr+tr>td'   ).innerText.trim() ).to.equal("0 name: Doc" );
+        expect(el.querySelector('tr+tr>td+td').innerText.trim() ).to.equal("50" );
+        expect(el.querySelector('tr+tr+tr>td'   ).innerText.trim() ).to.equal("1 name: Grumpy" );
+        expect(el.querySelector('tr+tr+tr>td+td').innerText.trim() ).to.equal("17" );
+    } );
+
     it( 'render from html', async () =>
     {   const url = new URL('mock/doc.html', import.meta.url).pathname;
 
