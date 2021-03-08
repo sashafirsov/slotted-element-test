@@ -44,6 +44,14 @@ describe( 'FetchElement', () =>
         expect(el.state                              ).to.equal('loaded');
     } );
 
+    it( 'load json with skiprender ', async () =>
+    {   const el = await fixture( html`
+        <fetch-element src="${JSON_URL}" skiprender="true">original</fetch-element>` );
+        await el.promise;
+
+        expect( el.innerHTML ).to.equal('original');
+    } );
+
     it( 'render from json string', async () =>
     {   const url = new URL('mock/string.json', import.meta.url).pathname;
 
@@ -80,9 +88,9 @@ describe( 'FetchElement', () =>
 
         const el = await fixture( html`
             <fetch-element src="${url}"></fetch-element>` );
-        el.data2Html = data => `<h1>${data.name}</h1>
-                                <img src="${data.portrait}" alt="" />
-                                `;
+        el.render = data => `<h1>${data.name}</h1>
+                            <img src="${data.portrait}" alt="" />
+                            `;
         await el.promise;
 
         expect(el.querySelector('h1') ).to.not.equal(null );
@@ -126,7 +134,7 @@ describe( 'FetchElement', () =>
 
         const el = await fixture( html`
             <fetch-element src="${url}"></fetch-element>` );
-        el.data2Html = function ()
+        el.render = function ()
         {
             this.querySelector('summary').innerText += ' is my favorite';
         } ;
