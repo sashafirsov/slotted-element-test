@@ -1,27 +1,48 @@
 {
-  "name": "slotted-element",
-  "version": "0.0.0",
-  "description": "Webcomponent slotted-element following open-wc recommendations",
-  "author": "slotted-element",
-  "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "web-dev-server",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
-    "storybook": "web-dev-server -c .storybook/server.mjs",
-    "storybook:build": "build-storybook"
-  },
-  "dependencies": {
-    "slotted-element": "^0.0.0"
-  },
-  "devDependencies": {
-    "@open-wc/testing": "^2.5.32",
-    "@web/dev-server": "^0.1.5",
-    "@web/dev-server-storybook": "^0.3.5",
-    "@web/test-runner": "^0.12.7",
-    "prismjs": "^1.23.0"
-  }
+    "name": "slotted-element-test",
+    "version": "1.0.2",
+    "description": "test for fetch-element and slotted-element",
+    "author": {
+        "name": "Sasha Firsov",
+        "email": "suns@simulationworks.com",
+        "url": "https://blog.firsov.net/"
+    },
+    "homepage": "https://github.com/sashafirsov/slotted-element",
+    "bugs": "https://github.com/sashafirsov/slotted-element/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sashafirsov/slotted-element-test.git"
+    },
+    "keywords": [
+        "JS",
+        "Vanilla",
+        "ShadowDOM",
+        "Web Component",
+        "WebComponent"
+    ],
+    "license": "Apache-2.0",
+    "main": "index.js",
+    "module": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "web-dev-server",
+        "test": "web-test-runner --coverage",
+        "test:watch": "web-test-runner --watch",
+        "storybook": "web-dev-server -c .storybook/server.mjs",
+        "storybook:build": "build-storybook"
+    },
+    "dependencies": {
+        "slotted-element": "^1.0.2"
+    },
+    "devDependencies": {
+        "@open-wc/testing": "^2.5.32",
+        "@web/dev-server": "^0.1.8",
+        "@web/dev-server-storybook": "^0.1.3",
+        "@web/test-runner": "^0.12.17",
+        "prismjs": "^1.23.0"
+    },
+    "funding": {
+        "type": "patreon",
+        "url": "https://www.patreon.com/sashafirsov"
+    }
 }
