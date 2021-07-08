@@ -1,6 +1,7 @@
 import { html, fixture, expect, assert } from '@open-wc/testing';
 
 import 'slotted-element/fetch-element.js';
+import { json2table } from 'slotted-element/render/json.js';
 
 const JSON_URL = new URL('mock/mock.json', import.meta.url).pathname;
 describe( 'FetchElement', () =>
@@ -58,7 +59,6 @@ describe( 'FetchElement', () =>
         const el = await fixture( html`
             <fetch-element src="${url}"></fetch-element>` );
         await el.promise;
-
         expect(el.innerText ).to.equal("Hello World" );
     } );
     it( 'render from json number', async () =>
@@ -102,14 +102,13 @@ describe( 'FetchElement', () =>
     {   const url = new URL('mock/dwarfs.json', import.meta.url).pathname;
         const el = await fixture( html`
             <fetch-element src="${url}"></fetch-element>` );
-        const orig = el.json2table;
         el.json2table = (data,path) =>
         {
             if( path.length === 2 && path[1] === 'name' )
                 return `${ path.join(' ') }: ${ data }`;
-            return orig.apply(el,[data,path]);
+            return json2table.apply(el,[data,path]);
         }
-        await el.promise;
+        const data = await el.promise;
 
         expect(el.querySelectorAll('tr').length ).to.equal( 8 );
         expect(el.querySelector('tr+tr>td'   ).innerText.trim() ).to.equal("0 name: Doc" );
@@ -142,6 +141,16 @@ describe( 'FetchElement', () =>
         expect(el.querySelector('summary') ).to.not.equal(null );
         expect(el.querySelector('summary').innerText ).to.equal('Doc is my favorite' );
         expect(el.querySelector('img').src ).to.include('mock/doc.png' );
+    } );
+
+    it( 'render from SVG', async () =>
+    {   const url = new URL('/node_modules/slotted-element/demo/confused.svg', import.meta.url).pathname;
+
+        const el = await fixture( html`
+            <fetch-element src="${url}"></fetch-element>` );
+        await el.promise;
+        expect(el.querySelector('svg') ).to.not.equal(null );
+        expect(el.querySelector('svg').getAttribute('width') ).to.equal('100%' );
     } );
 
 } );
