@@ -1,7 +1,8 @@
 # slotted-element-test
 test suite for `slotted-element` and `fetch-element`
 
-https://github.com/sashafirsov/slotted-element
+[![git][github-image] slotted-element](https://github.com/sashafirsov/slotted-element)
+| [demo](https://unpkg.com/slotted-element@1.0.3/demo/index.html)
 
 # Test
 
@@ -10,3 +11,5 @@ https://github.com/sashafirsov/slotted-element
 
 # Code coverage
 After test run is located in [coverage/lcov-report/index.html](coverage/lcov-report/index.html)
+
+[github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
