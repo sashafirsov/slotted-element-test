@@ -1,6 +1,6 @@
 {
     "name": "slotted-element-test",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "test for fetch-element and slotted-element",
     "author": {
         "name": "Sasha Firsov",
@@ -30,13 +30,14 @@
         "test:watch": "web-test-runner --watch"
     },
     "dependencies": {
-        "slotted-element": "^1.0.3"
+        "css-chain": "^1.1.0",
+        "slotted-element": "^1.1.0"
     },
     "devDependencies": {
-        "@open-wc/testing": "^2.5.33",
-        "@web/dev-server": "^0.1.18",
-        "@web/test-runner": "^0.13.13",
-        "prismjs": "^1.24.1"
+        "@open-wc/testing": "^3.1.1",
+        "@web/dev-server": "^0.1.30",
+        "@web/test-runner": "^0.13.27",
+        "prismjs": "^1.27.0"
     },
     "funding": {
         "type": "patreon",
