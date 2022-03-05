@@ -2,7 +2,7 @@
 test suite for `slotted-element` and `fetch-element`
 
 [![git][github-image] slotted-element](https://github.com/sashafirsov/slotted-element)
-| [demo](https://unpkg.com/slotted-element@1.0.3/demo/index.html)
+| [demo](https://unpkg.com/slotted-element@1.1.0/demo/index.html)
 
 # Test
 

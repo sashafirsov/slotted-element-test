@@ -1,6 +1,6 @@
 {
     "name": "slotted-element-test",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "test for fetch-element and slotted-element",
     "author": {
         "name": "Sasha Firsov",
@@ -31,7 +31,7 @@
     },
     "dependencies": {
         "css-chain": "^1.1.0",
-        "slotted-element": "^1.0.3"
+        "slotted-element": "^1.1.0"
     },
     "devDependencies": {
         "@open-wc/testing": "^3.1.1",
