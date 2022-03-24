@@ -20,16 +20,29 @@ describe('SlottedElement', () => {
         expect(el.slots['slot0'].tagName).to.equal('A');
         expect(el.slots['slot1'].tagName).to.equal('B');
     });
-    it('slot=xxx are hidden in content', async () => {
+    it('slot=xxx shown in content', async () => {
         const el = await fixture(html`
             <slotted-element>
                 <h6>inline HTML with slots 🎉</h6>
                 <a slot="slot0">link</a>
-                <b slot="slot1">hidden</b>
+                <i><b slot="slot1">bold</b></i>
             </slotted-element>`);
         expect(el.innerText).does.include('inline HTML with slots');
-        expect(el.innerText).does.not.include('link');
-        expect(el.innerText).does.not.include('hidden');
+        expect(el.innerText).does.include('link');
+        expect(el.innerText).does.include('bold');
+    });
+    it('slot=xxx are applied in SLOT order', async () => {
+        const el = await fixture(html`
+            <slotted-element>
+                <slot name="slot1">xxx</slot><slot name="slot0">yyy</slot>
+                <a slot="slot0">link</a>
+                <b slot="slot1">bold</b>
+                <h6>inline HTML with slots 🎉</h6>
+            </slotted-element>`);
+        expect(el.innerText).does.include('inline HTML with slots');
+        expect(el.innerText).does.include('boldlink');
+        expect(el.innerText).does.not.include('xxx');
+        expect(el.innerText).does.not.include('yyy');
     });
     it('template defined by ID', async () => {
         const t = document.createElement('div');
