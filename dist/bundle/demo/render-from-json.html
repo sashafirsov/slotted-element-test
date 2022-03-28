@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>render table from json - FetchElement</title>
+    <style> @import "demo.css"; </style>
+    <script type="importmap">{"imports": {"css-chain": "../node_modules/css-chain/CssChain.js"}}</script>
+    <script type="module" src="https://unpkg.com/html-demo-element@1.0.7/html-demo-element.js"></script>
+</head>
+<body>
+<h1> fetch-element render from JSON demo </h1>
+<slotted-element src="nav.html"></slotted-element>
+<p>
+    <var>slotted-element</var> by default renders JSON as table. The rendering could be redefined:
+</p>
+<main>
+    <html-demo-element legend="Custom renderer">
+        <json-render-element src="doc.json"></json-render-element>
+        <script type="module">
+            import {FetchElement} from '../slotted-element.js';
+            window.customElements.define('json-render-element',
+                class JsonElement extends FetchElement
+                {
+                    render(json)
+                    {
+                        return `<h1>${ json.name }</h1>
+                                <img src="${ json.portrait }" alt="" />
+                                `;
+                    }
+                });
+        </script>
+    </html-demo-element>
+
+    <html-demo-element legend="Default as table">
+        <fetch-element src="doc.json"></fetch-element>
+    </html-demo-element>
+
+    <html-demo-element legend="Array as table">
+        <fetch-element src="dwarfs.json"></fetch-element>
+    </html-demo-element>
+</main>
+<main>
+    <html-demo-element legend="dwarfs.json" src="dwarfs.json"></html-demo-element>
+    <html-demo-element legend="doc.json" src="doc.json"></html-demo-element>
+</main>
+</body>
+</html>

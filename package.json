@@ -1,6 +1,6 @@
 {
     "name": "slotted-element-test",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "test for fetch-element and slotted-element",
     "author": {
         "name": "Sasha Firsov",
@@ -25,18 +25,20 @@
     "module": "index.js",
     "type": "module",
     "scripts": {
+        "build": "bash build.sh",
         "start": "web-dev-server",
-        "test": "web-test-runner --coverage",
+        "test": "bash test.sh",
         "test:watch": "web-test-runner --watch"
     },
     "dependencies": {
-        "css-chain": "^1.1.0",
-        "slotted-element": "^1.1.0"
+        "slotted-element": "^1.1.1"
     },
     "devDependencies": {
-        "@open-wc/testing": "^3.1.1",
+        "@chialab/esbuild-plugin-html": "^0.15.9",
+        "@open-wc/testing": "^3.1.2",
         "@web/dev-server": "^0.1.30",
         "@web/test-runner": "^0.13.27",
+        "esbuild": "^0.14.27",
         "prismjs": "^1.27.0"
     },
     "funding": {
